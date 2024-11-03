@@ -346,6 +346,8 @@ Response Body:
 
 > Create a reminder
 
+Method: POST
+
 Header: `Authorization: Bearer <sessionID>`
 
 Query: `scheduleId=<scheduleID>`
@@ -374,6 +376,8 @@ Response Body:
 
 > Delete a reminder
 
+Method: POST
+
 Header: `Authorization: Bearer <sessionID>`
 
 Query: `scheduleId=<scheduleID>`
@@ -399,6 +403,8 @@ Response Body:
 ### /edit-reminder
 
 > Edit a reminder
+
+Method: POST
 
 Header: `Authorization: Bearer <sessionID>`
 
@@ -428,6 +434,8 @@ Response Body:
 ### /get-reminder
 
 > Get reminders
+
+Method: GET
 
 Query:
 - `scheduleId=<scheduleID>`
