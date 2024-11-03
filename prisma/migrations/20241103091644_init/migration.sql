@@ -47,7 +47,7 @@ CREATE TABLE `ScheduleEditor` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `ScheduleMapel` (
+CREATE TABLE `ScheduleType` (
     `name` VARCHAR(36) NOT NULL,
     `scheduleId` VARCHAR(36) NOT NULL,
 
@@ -61,7 +61,7 @@ CREATE TABLE `Reminder` (
     `description` TEXT NULL,
     `done` BOOLEAN NOT NULL,
     `lastRemind` DATETIME(3) NULL,
-    `mapel` VARCHAR(36) NOT NULL,
+    `type` VARCHAR(36) NOT NULL,
     `scheduleId` VARCHAR(36) NOT NULL,
 
     INDEX `Reminder_date_idx`(`date`),
@@ -69,22 +69,25 @@ CREATE TABLE `Reminder` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Schedule` ADD CONSTRAINT `Schedule_ownerId_fkey` FOREIGN KEY (`ownerId`) REFERENCES `Account`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `AccountSession` ADD CONSTRAINT `AccountSession_accountId_fkey` FOREIGN KEY (`accountId`) REFERENCES `Account`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ScheduleSubscriber` ADD CONSTRAINT `ScheduleSubscriber_accountId_fkey` FOREIGN KEY (`accountId`) REFERENCES `Account`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Schedule` ADD CONSTRAINT `Schedule_ownerId_fkey` FOREIGN KEY (`ownerId`) REFERENCES `Account`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ScheduleSubscriber` ADD CONSTRAINT `ScheduleSubscriber_scheduleId_fkey` FOREIGN KEY (`scheduleId`) REFERENCES `Schedule`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ScheduleSubscriber` ADD CONSTRAINT `ScheduleSubscriber_accountId_fkey` FOREIGN KEY (`accountId`) REFERENCES `Account`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ScheduleEditor` ADD CONSTRAINT `ScheduleEditor_accountId_fkey` FOREIGN KEY (`accountId`) REFERENCES `Account`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ScheduleSubscriber` ADD CONSTRAINT `ScheduleSubscriber_scheduleId_fkey` FOREIGN KEY (`scheduleId`) REFERENCES `Schedule`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ScheduleEditor` ADD CONSTRAINT `ScheduleEditor_scheduleId_fkey` FOREIGN KEY (`scheduleId`) REFERENCES `Schedule`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ScheduleEditor` ADD CONSTRAINT `ScheduleEditor_accountId_fkey` FOREIGN KEY (`accountId`) REFERENCES `Account`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ScheduleMapel` ADD CONSTRAINT `ScheduleMapel_scheduleId_fkey` FOREIGN KEY (`scheduleId`) REFERENCES `Schedule`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ScheduleEditor` ADD CONSTRAINT `ScheduleEditor_scheduleId_fkey` FOREIGN KEY (`scheduleId`) REFERENCES `Schedule`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Reminder` ADD CONSTRAINT `Reminder_scheduleId_mapel_fkey` FOREIGN KEY (`scheduleId`, `mapel`) REFERENCES `ScheduleMapel`(`scheduleId`, `name`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `ScheduleType` ADD CONSTRAINT `ScheduleType_scheduleId_fkey` FOREIGN KEY (`scheduleId`) REFERENCES `Schedule`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Reminder` ADD CONSTRAINT `Reminder_scheduleId_type_fkey` FOREIGN KEY (`scheduleId`, `type`) REFERENCES `ScheduleType`(`scheduleId`, `name`) ON DELETE CASCADE ON UPDATE CASCADE;

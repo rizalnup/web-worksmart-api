@@ -19,10 +19,12 @@ model Account {
   ownedSchedules Schedule[]
   subscribedSchedules ScheduleSubscriber[]
   editableSchedules ScheduleEditor[]
+  sessions AccountSession[]
 }
 
 model AccountSession {
   id String @id @default(uuid()) @db.VarChar(36)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   accountId String @db.VarChar(36)
   expireAt DateTime
 
@@ -33,34 +35,34 @@ model AccountSession {
 model Schedule {
   id String @id @default(uuid()) @db.VarChar(36)
   name String @db.VarChar(36)
-  owner Account @relation(fields: [ownerId], references: [id])
+  owner Account @relation(fields: [ownerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   ownerId String @db.VarChar(36)
-  mapel ScheduleMapel[]
+  types ScheduleType[]
   subscribers ScheduleSubscriber[]
   editors ScheduleEditor[]
 }
 
 model ScheduleSubscriber {
-  account Account @relation(fields: [accountId], references: [id])
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   accountId String @db.VarChar(36)
-  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   scheduleId String @db.VarChar(36)
 
   @@id([scheduleId, accountId])
 }
 
 model ScheduleEditor {
-  account Account @relation(fields: [accountId], references: [id])
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   accountId String @db.VarChar(36)
-  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   scheduleId String @db.VarChar(36)
 
   @@id([scheduleId, accountId])
 }
 
-model ScheduleMapel {
+model ScheduleType {
   name String @db.VarChar(36)
-  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   scheduleId String @db.VarChar(36)
   reminders Reminder[]
 
@@ -73,8 +75,8 @@ model Reminder {
   description String? @db.Text
   done Boolean
   lastRemind DateTime?
-  mapel String @db.VarChar(36)
-  schedule ScheduleMapel @relation(fields: [scheduleId, mapel], references: [scheduleId, name])
+  type String @db.VarChar(36)
+  schedule ScheduleType @relation(fields: [scheduleId, type], references: [scheduleId, name], onDelete: Cascade, onUpdate: Cascade)
   scheduleId String @db.VarChar(36)
 
   @@index([date])

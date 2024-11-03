@@ -7,17 +7,6 @@ export function API(app: Hono, prisma: PrismaClient): void {
     app.post("/create-account", async ctx => {
         const data = await ctx.req.json<CreateAccountJSON>()
 
-        const availableAcc = await prisma.account.findUnique({
-            where: { number: data.number }
-        })
-
-        if (availableAcc) {
-            return ctx.json({
-                code: 403,
-                message: "Account already exists"
-            }, 403)
-        }
-
         let malformed = false
 
         if (!(data.number.length >= 10 || data.number.length <= 16)) {
@@ -41,6 +30,17 @@ export function API(app: Hono, prisma: PrismaClient): void {
                 code: 400,
                 message: "Malformed request"
             }, 400)
+        }
+
+        const availableAcc = await prisma.account.findUnique({
+            where: { number: data.number }
+        })
+
+        if (availableAcc) {
+            return ctx.json({
+                code: 403,
+                message: "Account already exists"
+            }, 403)
         }
 
         const salt = await genSalt()

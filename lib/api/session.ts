@@ -1,4 +1,4 @@
-import type { PrismaClient } from "../generated/client/deno/edge.ts"
+import type { PrismaClient } from "../../generated/client/deno/edge.ts"
 
 export async function manageSession(prisma: PrismaClient): Promise<void> {
     const date = new Date()

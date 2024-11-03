@@ -1,10 +1,10 @@
 import type { Hono } from "jsr:@hono/hono"
 import type { PrismaClient } from "../../../generated/client/deno/edge.ts"
 
-import { newSession, verifySession } from "../session.ts"
+import { verifySession } from "../session.ts"
 
 export function API(app: Hono, prisma: PrismaClient): void {
-    app.get("/new-session", async ctx => {
+    app.get("/delete-schedule", async ctx => {
         const bearer = "Bearer "
         const bearerToken = ctx.req.header("Authorization") ?? ""
         const sessionId = bearerToken.substring(bearer.length)
@@ -18,17 +18,26 @@ export function API(app: Hono, prisma: PrismaClient): void {
             }, 401)
         }
 
-        await prisma.accountSession.delete({
-            where: { id: sessionId }
-        })
+        const scheduleId = ctx.req.query("scheduleId") ?? ""
 
-        const session = await newSession(prisma, accountId)
+        try {
+            await prisma.schedule.delete({
+                where: { id: scheduleId, ownerId: accountId }
+            })
+        } catch (err) {
+            if ((err as Record<string, unknown>).code === "P2025") {
+                return ctx.json({
+                    code: 403,
+                    message: "Failed to delete schedule"
+                }, 403)
+            }
+
+            throw err
+        }
 
         return ctx.json({
-            id: session.id,
-            exp: session.expireAt.toISOString(),
             code: 200,
-            message: "Created new session"
+            message: "Schedule deleted successfully"
         }, 200)
     })
 }
