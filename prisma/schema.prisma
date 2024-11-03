@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../generated/client"
+  previewFeatures = ["deno"]
+  engineType = "library"
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+}
+
+model Account {
+  id String @id @default(uuid()) @db.VarChar(36)
+  number String @unique @db.VarChar(16)
+  password String @db.VarChar(72)
+  remindHour Int @db.TinyInt
+  remindWhen Int @db.TinyInt
+  ownedSchedules Schedule[]
+  subscribedSchedules ScheduleSubscriber[]
+  editableSchedules ScheduleEditor[]
+}
+
+model AccountSession {
+  id String @id @default(uuid()) @db.VarChar(36)
+  accountId String @db.VarChar(36)
+  expireAt DateTime
+
+  @@index([expireAt])
+  @@index([accountId])
+}
+
+model Schedule {
+  id String @id @default(uuid()) @db.VarChar(36)
+  name String @db.VarChar(36)
+  owner Account @relation(fields: [ownerId], references: [id])
+  ownerId String @db.VarChar(36)
+  mapel ScheduleMapel[]
+  subscribers ScheduleSubscriber[]
+  editors ScheduleEditor[]
+}
+
+model ScheduleSubscriber {
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String @db.VarChar(36)
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId String @db.VarChar(36)
+
+  @@id([scheduleId, accountId])
+}
+
+model ScheduleEditor {
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String @db.VarChar(36)
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId String @db.VarChar(36)
+
+  @@id([scheduleId, accountId])
+}
+
+model ScheduleMapel {
+  name String @db.VarChar(36)
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId String @db.VarChar(36)
+  reminders Reminder[]
+
+  @@id([scheduleId, name])
+}
+
+model Reminder {
+  id String @id @default(uuid()) @db.VarChar(36)
+  date DateTime
+  description String? @db.Text
+  done Boolean
+  lastRemind DateTime?
+  mapel String @db.VarChar(36)
+  schedule ScheduleMapel @relation(fields: [scheduleId, mapel], references: [scheduleId, name])
+  scheduleId String @db.VarChar(36)
+
+  @@index([date])
+}

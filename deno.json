@@ -1,1 +1,15 @@
-{}
+{
+  "tasks": {
+    "start": "deno run --env lib/app.ts",
+    "migrate": "deno run -A npm:prisma migrate dev --name init && deno task generate",
+    "generate": "deno run -A npm:prisma generate && deno task generate:rename",
+    "generate:rename": "mv ./generated/client/index.js ./generated/client/index.cjs"
+  },
+  "imports": {
+    "@hono/hono": "jsr:@hono/hono@^4.6.8",
+    "@prisma/client": "npm:@prisma/client@^5.21.1",
+    "mysql2": "npm:mysql2@^3.11.3",
+    "prisma": "npm:prisma@^5.21.1"
+  },
+  "nodeModulesDir": "auto"
+}

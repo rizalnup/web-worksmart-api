@@ -1,0 +1,155 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@hono/hono@*": "4.6.8",
+    "jsr:@hono/hono@^4.6.8": "4.6.8",
+    "jsr:@std/encoding@*": "1.0.5",
+    "jsr:@std/fs@*": "1.0.5",
+    "jsr:@std/path@*": "1.0.8",
+    "jsr:@std/path@^1.0.7": "1.0.8",
+    "npm:@prisma/client@*": "5.21.1_prisma@5.21.1",
+    "npm:@prisma/client@^5.21.1": "5.21.1_prisma@5.21.1",
+    "npm:mysql2@^3.11.3": "3.11.3",
+    "npm:prisma@*": "5.21.1",
+    "npm:prisma@5.21.1": "5.21.1",
+    "npm:prisma@^5.21.1": "5.21.1"
+  },
+  "jsr": {
+    "@hono/hono@4.6.8": {
+      "integrity": "4c92cb895360d93b7bc637c0c3f26449761b2bb160009c0387a37a1d457850f0"
+    },
+    "@std/encoding@1.0.5": {
+      "integrity": "ecf363d4fc25bd85bd915ff6733a7e79b67e0e7806334af15f4645c569fefc04"
+    },
+    "@std/fs@1.0.5": {
+      "integrity": "41806ad6823d0b5f275f9849a2640d87e4ef67c51ee1b8fb02426f55e02fd44e",
+      "dependencies": [
+        "jsr:@std/path@^1.0.7"
+      ]
+    },
+    "@std/path@1.0.8": {
+      "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
+    }
+  },
+  "npm": {
+    "@prisma/client@5.21.1_prisma@5.21.1": {
+      "integrity": "sha512-3n+GgbAZYjaS/k0M03yQsQfR1APbr411r74foknnsGpmhNKBG49VuUkxIU6jORgvJPChoD4WC4PqoHImN1FP0w==",
+      "dependencies": [
+        "prisma"
+      ]
+    },
+    "@prisma/debug@5.21.1": {
+      "integrity": "sha512-uY8SAhcnORhvgtOrNdvWS98Aq/nkQ9QDUxrWAgW8XrCZaI3j2X7zb7Xe6GQSh6xSesKffFbFlkw0c2luHQviZA=="
+    },
+    "@prisma/engines-version@5.21.1-1.bf0e5e8a04cada8225617067eaa03d041e2bba36": {
+      "integrity": "sha512-qvnEflL0//lh44S/T9NcvTMxfyowNeUxTunPcDfKPjyJNrCNf2F1zQLcUv5UHAruECpX+zz21CzsC7V2xAeM7Q=="
+    },
+    "@prisma/engines@5.21.1": {
+      "integrity": "sha512-hGVTldUkIkTwoV8//hmnAAiAchi4oMEKD3aW5H2RrnI50tTdwza7VQbTTAyN3OIHWlK5DVg6xV7X8N/9dtOydA==",
+      "dependencies": [
+        "@prisma/debug",
+        "@prisma/engines-version",
+        "@prisma/fetch-engine",
+        "@prisma/get-platform"
+      ]
+    },
+    "@prisma/fetch-engine@5.21.1": {
+      "integrity": "sha512-70S31vgpCGcp9J+mh/wHtLCkVezLUqe/fGWk3J3JWZIN7prdYSlr1C0niaWUyNK2VflLXYi8kMjAmSxUVq6WGQ==",
+      "dependencies": [
+        "@prisma/debug",
+        "@prisma/engines-version",
+        "@prisma/get-platform"
+      ]
+    },
+    "@prisma/get-platform@5.21.1": {
+      "integrity": "sha512-sRxjL3Igst3ct+e8ya/x//cDXmpLbZQ5vfps2N4tWl4VGKQAmym77C/IG/psSMsQKszc8uFC/q1dgmKFLUgXZQ==",
+      "dependencies": [
+        "@prisma/debug"
+      ]
+    },
+    "aws-ssl-profiles@1.1.2": {
+      "integrity": "sha512-NZKeq9AfyQvEeNlN0zSYAaWrmBffJh3IELMZfRpJVWgrpEbtEpnjvzqBPf+mxoI287JohRDoa+/nsfqqiZmF6g=="
+    },
+    "denque@2.1.0": {
+      "integrity": "sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw=="
+    },
+    "fsevents@2.3.3": {
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="
+    },
+    "generate-function@2.3.1": {
+      "integrity": "sha512-eeB5GfMNeevm/GRYq20ShmsaGcmI81kIX2K9XQx5miC8KdHaC6Jm0qQ8ZNeGOi7wYB8OsdxKs+Y2oVuTFuVwKQ==",
+      "dependencies": [
+        "is-property"
+      ]
+    },
+    "iconv-lite@0.6.3": {
+      "integrity": "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==",
+      "dependencies": [
+        "safer-buffer"
+      ]
+    },
+    "is-property@1.0.2": {
+      "integrity": "sha512-Ks/IoX00TtClbGQr4TWXemAnktAQvYB7HzcCxDGqEZU6oCmb2INHuOoKxbtR+HFkmYWBKv/dOZtGRiAjDhj92g=="
+    },
+    "long@5.2.3": {
+      "integrity": "sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q=="
+    },
+    "lru-cache@7.18.3": {
+      "integrity": "sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA=="
+    },
+    "lru.min@1.1.1": {
+      "integrity": "sha512-FbAj6lXil6t8z4z3j0E5mfRlPzxkySotzUHwRXjlpRh10vc6AI6WN62ehZj82VG7M20rqogJ0GLwar2Xa05a8Q=="
+    },
+    "mysql2@3.11.3": {
+      "integrity": "sha512-Qpu2ADfbKzyLdwC/5d4W7+5Yz7yBzCU05YWt5npWzACST37wJsB23wgOSo00qi043urkiRwXtEvJc9UnuLX/MQ==",
+      "dependencies": [
+        "aws-ssl-profiles",
+        "denque",
+        "generate-function",
+        "iconv-lite",
+        "long",
+        "lru.min",
+        "named-placeholders",
+        "seq-queue",
+        "sqlstring"
+      ]
+    },
+    "named-placeholders@1.1.3": {
+      "integrity": "sha512-eLoBxg6wE/rZkJPhU/xRX1WTpkFEwDJEN96oxFrTsqBdbT5ec295Q+CoHrL9IT0DipqKhmGcaZmwOt8OON5x1w==",
+      "dependencies": [
+        "lru-cache"
+      ]
+    },
+    "prisma@5.21.1": {
+      "integrity": "sha512-PB+Iqzld/uQBPaaw2UVIk84kb0ITsLajzsxzsadxxl54eaU5Gyl2/L02ysivHxK89t7YrfQJm+Ggk37uvM70oQ==",
+      "dependencies": [
+        "@prisma/engines",
+        "fsevents"
+      ]
+    },
+    "safer-buffer@2.1.2": {
+      "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+    },
+    "seq-queue@0.0.5": {
+      "integrity": "sha512-hr3Wtp/GZIc/6DAGPDcV4/9WoZhjrkXsi5B/07QgX8tsdc6ilr7BFM6PM6rbdAX1kFSDYeZGLipIZZKyQP0O5Q=="
+    },
+    "sqlstring@2.3.3": {
+      "integrity": "sha512-qC9iz2FlN7DQl3+wjwn3802RTyjCx7sDvfQEXchwa6CWOx07/WVfh91gBmQ9fahw8snwGEWU3xGzOt4tFyHLxg=="
+    }
+  },
+  "remote": {
+    "https://deno.land/x/bcrypt@v0.4.1/mod.ts": "ff09bdae282583cf5f7d87efe37ddcecef7f14f6d12e8b8066a3058db8c6c2f7",
+    "https://deno.land/x/bcrypt@v0.4.1/src/bcrypt/base64.ts": "b8266450a4f1eb6960f60f2f7986afc4dde6b45bd2d7ee7ba10789e67e17b9f7",
+    "https://deno.land/x/bcrypt@v0.4.1/src/bcrypt/bcrypt.ts": "ec221648cc6453ea5e3803bc817c01157dada06aa6f7a0ba6b9f87aae32b21e2",
+    "https://deno.land/x/bcrypt@v0.4.1/src/main.ts": "08d201b289c8d9c46f8839c69cd6625b213863db29775c7a200afc3b540e64f8",
+    "https://deno.land/x/bcrypt@v0.4.1/src/worker.ts": "5a73bdfee9c9e622f47c9733d374b627dce52fb3ec1e74c8226698b3fc57ffac"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@hono/hono@^4.6.8",
+      "npm:@prisma/client@^5.21.1",
+      "npm:mysql2@^3.11.3",
+      "npm:prisma@^5.21.1"
+    ]
+  }
+}
