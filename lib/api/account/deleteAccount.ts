@@ -1,5 +1,5 @@
 import type { Hono } from "jsr:@hono/hono"
-import type { PrismaClient } from "../../generated/client/deno/edge.ts"
+import type { PrismaClient } from "../../../generated/client/deno/edge.ts"
 
 import { compare } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts"
 

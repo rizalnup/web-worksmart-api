@@ -11,13 +11,13 @@ app.onError((err, ctx) => {
     console.error(err)
     return ctx.json({
         code: 500,
-        message: err.message
+        message: "The server had an error"
     }, 500)
 })
 
-const files = expandGlob("./lib/api/*.ts")
+const files = expandGlob("./lib/api/**/*.ts")
 for await (const file of files) {
-    const api: APIInterface = await import(`./api/${file.name}`)
+    const api: APIInterface = await import(`file:${file.path}`)
     await api.API(app, prisma)
 }
 

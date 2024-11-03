@@ -1,8 +1,8 @@
 import type { Hono } from "jsr:@hono/hono"
-import type { PrismaClient } from "../../generated/client/deno/edge.ts"
+import type { PrismaClient } from "../../../generated/client/deno/edge.ts"
 
 import { hash, genSalt } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts"
-import { verifySession } from "../session.ts"
+import { verifySession } from "../../session.ts"
 
 export function API(app: Hono, prisma: PrismaClient): void {
     app.post("edit-account", async ctx => {

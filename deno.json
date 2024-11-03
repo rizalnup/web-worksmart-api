@@ -8,7 +8,6 @@
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.8",
     "@prisma/client": "npm:@prisma/client@^5.21.1",
-    "mysql2": "npm:mysql2@^3.11.3",
     "prisma": "npm:prisma@^5.21.1"
   },
   "nodeModulesDir": "auto"

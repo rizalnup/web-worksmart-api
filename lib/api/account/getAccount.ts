@@ -1,7 +1,7 @@
 import type { Hono } from "jsr:@hono/hono"
-import type { PrismaClient } from "../../generated/client/deno/edge.ts"
+import type { PrismaClient } from "../../../generated/client/deno/edge.ts"
 
-import { verifySession } from "../session.ts"
+import { verifySession } from "../../session.ts"
 
 export function API(app: Hono, prisma: PrismaClient): void {
     app.get("get-account", async ctx => {
