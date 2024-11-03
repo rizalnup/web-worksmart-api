@@ -64,7 +64,7 @@ CREATE TABLE `Reminder` (
     `type` VARCHAR(36) NOT NULL,
     `scheduleId` VARCHAR(36) NOT NULL,
 
-    INDEX `Reminder_date_idx`(`date`),
+    INDEX `Reminder_date_idx`(`date` DESC),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

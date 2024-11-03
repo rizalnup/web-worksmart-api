@@ -26,7 +26,7 @@ export function API(app: Hono, prisma: PrismaClient): void {
 
         return ctx.json({
             id: session.id,
-            exp: session.expireAt.toISOString(),
+            exp: session.expireAt,
             code: 200,
             message: "Created new session"
         }, 200)

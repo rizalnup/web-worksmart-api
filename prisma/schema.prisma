@@ -79,5 +79,6 @@ model Reminder {
   schedule ScheduleType @relation(fields: [scheduleId, type], references: [scheduleId, name], onDelete: Cascade, onUpdate: Cascade)
   scheduleId String @db.VarChar(36)
 
-  @@index([date])
+  @@index([scheduleId])
+  @@index([date(sort: Desc)])
 }
