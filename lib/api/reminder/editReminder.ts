@@ -143,6 +143,6 @@ interface EditReminderJSON {
     id: string
     type?: string
     date?: string
-    description?: string | null
     done?: boolean
+    description?: string | null
 }
